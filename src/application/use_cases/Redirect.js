@@ -1,5 +1,5 @@
 
-module.exports = () => {
+module.exports = (UrlRepository) => {
 
     const Execute = async (code) => {
         console.log('code', code);

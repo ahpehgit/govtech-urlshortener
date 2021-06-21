@@ -2,13 +2,13 @@ const Redirect = require('../application/use_cases/Redirect');
 
 module.exports = (dependencies) => {
 
-    //const { sampleRepository } = dependencies.DBService;
+    const { urlRepository } = dependencies.DBService;
     
     const redirect = (req, res, next) => {
         //localhost:3000/<code>
 
         const code = req.params.code;
-        const query = Redirect();
+        const query = Redirect(urlRepository);
 
         query.Execute(code).then((data) => {
             if (data) {
