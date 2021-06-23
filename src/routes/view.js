@@ -8,7 +8,11 @@ const viewRouter = (dependencies) => {
 
     // load controller with dependencies
     router.get('/home', (req, res) => {
-        res.render('home', {page: 'Home', menuId: 'home'});
+        res.render('home', {page: 'URL Shortener'});
+    });
+
+    router.get('/sample', (req, res) => {
+        res.render('sample', {page: 'Home', menuId: 'home'});
     });
     return router;
 };
