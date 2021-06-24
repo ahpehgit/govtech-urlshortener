@@ -34,3 +34,11 @@ it('Shorten with valid url', async() => {;
 it('Shorten with invalid url', async() => {;
     expect(await FetchResponseStatus(`http://${process.env.SERVER}:${process.env.PORT}/convert/shorten/?url=https://google.com123123`)).toEqual(false);
 });
+
+it('Shorten url with valid redirect', async() => {;
+    expect(await FetchStatusCode(`http://${process.env.SERVER}:${process.env.PORT}/url/123456`)).toEqual(302);
+});
+
+it('Shorten url with invalid redirect', async() => {;
+    expect(await FetchStatusCode(`http://${process.env.SERVER}:${process.env.PORT}/url/123456`)).toEqual(expect.not.toBe(302));
+});
