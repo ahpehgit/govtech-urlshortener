@@ -14,8 +14,8 @@ const apiRouter = (dependencies) => {
 
     routes.use('/sample', sampleRouter);
     routes.use('/convert', urlConvertRouter);
-    routes.use('/view', viewRouter);
-    routes.use('/', redirectRouter)
+    routes.use('/url', redirectRouter);
+    routes.use('/', viewRouter);
     
     return routes;
 };

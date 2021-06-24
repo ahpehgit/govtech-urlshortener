@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
     <head><%- include ('partials/head') %></head>
-    <body>
-        <div class="container-fluid" style="padding-top: 0; max-width: 70%"> 
-            <form>
-                <h3><%= page %></h3>
-                <div class="form-group">
-                <label for="shortUrl">Convert to short url</label>
-                    <input type="text" class="form-control" id="shortUrl" aria-describedby="longUrlContainer" placeholder="Enter long url">
-                    <div id="longUrlContainer" class="alert alert-success" role="alert" style="margin: 1em 0;"></div>
+    <body style="display: flex; align-items: center;">
+        <div class="ui segment" style="width: 70%; margin: 0 auto;">
+            <form class="ui form">
+                <div class="field">
+                    <label>Type</label>
+                    <select class="ui dropdown" id="url-dropdown" style="width: auto;">
+                      <option value="0">Convert to short url</option>
+                      <option value="1">Convert to long url</option>
+                    </select>
                 </div>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+
+              <div class="field">
+                <label>URL</label>
+                <input type="text" name="url" placeholder="Enter URL">
+                <div id="longUrlContainer" class="alert alert-success" role="alert" style="margin: 1em 0;"></div>
+              </div>
+              
+              <button type="reset" class="ui button">Reset</button>
+              <button class="ui primary button" type="submit">Submit</button>
             </form>
         </div>
     </body>
     <%- include ('partials/script') %>
     <script language="javascript">
         const convertToShortUrl = async () => {
-            await getRequest('sample').then(res => {
+            return await getRequest('sample').then(res => {
                 console.log(res);
-                $('#longUrlContainer').html('<a href="#" class="alert-link" target="_blank">' + res.data + '</a>');
+                return res.data;
           });
         };
 
-        $('button[type="submit"]').click(e => {
+        $('button[type="submit"]').click(async(e) => {
             e.preventDefault();
-            convertToShortUrl();
+            
+            //console.log($('#url-dropdown').val());
+            await convertToShortUrl()
+            .then(data => {
+                $('#longUrlContainer').html('<a href="#" class="alert-link" target="_blank">' + data + '</a>');
+            });
         });
 
         $('button[type="reset"]').click(e => {
