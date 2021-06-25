@@ -8,7 +8,7 @@ const viewRouter = (dependencies) => {
 
     // load controller with dependencies
     router.get('/', (req, res) => {
-        res.render('home', {page: 'URL Shortener', menuId: 'home'});
+        res.render('home', {page: 'URL Shortener', menuId: 'home', baseUrl: `http://${process.env.SERVER}:${process.env.PORT}`});
     });
 
     router.get('/sampleView', (req, res) => {

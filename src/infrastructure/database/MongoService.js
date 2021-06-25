@@ -18,7 +18,7 @@ module.exports = class MongoService extends DBService {
                 .then(async () => {
                 console.log("Mongo Database created!");
 
-                //await this.urlRepository.deleteAll();
+                await this.urlRepository.deleteAll();
                 //await this.urlRepository.add('1234', '5678').then(data => console.log('data', data));
                 //await this.urlRepository.getByCode('5678').then(data => console.log('data', data));
                 //await this.urlRepository.getByUrl('5678').then(data => console.log('data', data));

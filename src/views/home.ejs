@@ -3,6 +3,7 @@
     <head><%- include ('partials/head') %></head>
     <body style="display: flex; align-items: center;">
         <div class="ui segment" style="width: 70%; margin: 0 auto;">
+            <h3><%= page %></h3>
             <form class="ui form">
                 <div class="field">
                     <label>Type</label>
@@ -14,8 +15,8 @@
 
               <div class="field">
                 <label>URL</label>
-                <input type="text" name="url" placeholder="Enter URL">
-                <div id="longUrlContainer" class="alert alert-success" role="alert" style="margin: 1em 0;"></div>
+                <input type="text" name="url" placeholder="Enter URL" value="">
+                <div id="resultContainer" class="ui message" style="margin: 1em 0;"></div>
               </div>
               
               <button type="reset" class="ui button">Reset</button>
@@ -25,8 +26,15 @@
     </body>
     <%- include ('partials/script') %>
     <script language="javascript">
-        const convertToShortUrl = async () => {
-            return await getRequest('sample').then(res => {
+        const convertToShortUrl = async (longUrl) => {
+            return await getRequest(`/convert/shorten/?url=${longUrl}`).then(res => {
+                console.log(res);
+                return res.data;
+          });
+        };
+
+        const convertToLongUrl = async (shortUrl) => {
+            return await getRequest(`/convert/lengthen/?url=${shortUrl}`).then(res => {
                 console.log(res);
                 return res.data;
           });
@@ -35,15 +43,38 @@
         $('button[type="submit"]').click(async(e) => {
             e.preventDefault();
             
-            //console.log($('#url-dropdown').val());
-            await convertToShortUrl()
-            .then(data => {
-                $('#longUrlContainer').html('<a href="#" class="alert-link" target="_blank">' + data + '</a>');
-            });
+            const inputValue = $('input[name="url"]').val();
+            const dropdownValue = $('#url-dropdown').val();
+
+            if (dropdownValue === "0") {
+                await convertToShortUrl(inputValue)
+                .then(data => {
+                    if (data.success) {
+                        $('#resultContainer').attr('class', 'ui positive message');
+                        $('#resultContainer').html(`<a href=${data.data} class="alert-link" target="_blank">` + data.data + `</a>`);
+                    } else {
+                        $('#resultContainer').attr('class', 'ui negative message');
+                        $('#resultContainer').html(data.message);
+                    }
+                });
+            }
+            else {
+                await convertToLongUrl(inputValue)
+                .then(data => {
+                    if (data.success) {
+                        $('#resultContainer').attr('class', 'ui positive message');
+                        $('#resultContainer').html(`<a href=${data.data} class="alert-link" target="_blank">` + data.data + `</a>`);
+                    } else {
+                        $('#resultContainer').attr('class', 'ui negative message');
+                        $('#resultContainer').html(data.message);
+                    }
+                });
+            }
         });
 
         $('button[type="reset"]').click(e => {
-            $('#longUrlContainer').html('');
+            $('#resultContainer').attr('class', 'ui message');
+            $('#resultContainer').html('');
         });
     </script>
 <html>

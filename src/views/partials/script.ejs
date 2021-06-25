@@ -4,7 +4,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script language="javascript">
     const axiosInstance = axios.create({
-          baseURL: 'http://localhost:3000',
+        baseURL: `<%= baseUrl %>`,
         headers: {'Access-Control-Allow-Origin': '*'}
     });
 
