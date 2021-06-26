@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('express');
 const routes = require('./routes');
 const dependencies = require('./config/dependencies');
-const cronjob = require('./cronjob');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,9 +26,6 @@ dependencies.DBService.initDatabase().then(() => {
 
     // load routes
     app.use('/', routes(dependencies));
-
-    // * Cron * //
-    //cronjob.start(dependencies, '*/10 * * * * *');
 
     // * Start * //
     app.listen(port, () =>

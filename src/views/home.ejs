@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head><%- include ('partials/head') %></head>
-    <body style="display: flex; align-items: center;">
-        <div class="ui segment" style="width: 70%; margin: 0 auto;">
+    <body>
+        <div class="ui segment">
             <h3><%= page %></h3>
             <form class="ui form">
                 <div class="field">
                     <label>Type</label>
-                    <select class="ui dropdown" id="url-dropdown" style="width: auto;">
+                    <select class="ui dropdown" id="url-dropdown">
                       <option value="0">Convert to short url</option>
                       <option value="1">Convert to long url</option>
                     </select>
@@ -16,7 +16,7 @@
               <div class="field">
                 <label>URL</label>
                 <input type="text" name="url" placeholder="Enter URL" value="">
-                <div id="resultContainer" class="ui message" style="margin: 1em 0;"></div>
+                <div id="resultContainer" class="ui message"></div>
               </div>
               
               <button type="reset" class="ui button">Reset</button>
