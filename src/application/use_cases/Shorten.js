@@ -38,10 +38,10 @@ module.exports = (UrlRepository) => {
             }
             else {
                 const allCodes = await UrlRepository.getAllCodes();
-                token = crypto.randomBytes(8).toString('hex');
+                token = crypto.randomBytes(4).toString('hex');
 
                 while (allCodes.includes(token)) {
-                    token = crypto.randomBytes(8).toString('hex');
+                    token = crypto.randomBytes(4).toString('hex');
                 }
 
                 const addResult = await UrlRepository.add(token, sanitizeUrl);

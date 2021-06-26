@@ -5,7 +5,7 @@ module.exports = (UrlRepository) => {
 
     const Execute = async (shortUrl) => {
         shortUrl = Utility.StripSlash(shortUrl);
-        const code = shortUrl.slice(-16);
+        const code = shortUrl.slice(-8);
         let response = null;
         const getByCodeResult = await UrlRepository.getByCode(code);
 
