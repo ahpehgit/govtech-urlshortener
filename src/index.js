@@ -4,7 +4,7 @@ const routes = require('./routes');
 const dependencies = require('./config/dependencies');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const host = process.env.SERVER || 'No host name specified';
 
 dependencies.DBService.initDatabase().then(() => {
