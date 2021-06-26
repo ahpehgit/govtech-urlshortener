@@ -33,7 +33,7 @@ module.exports = (UrlRepository) => {
             let token = '';
             if (urlObj && urlObj.success) {
                 token = urlObj.code;
-                const shortUrl = `${process.env.SERVER}:${process.env.PORT}/url/${token}`;
+                const shortUrl = `${process.env.SERVER}/url/${token}`;
                 response = new Response(shortUrl, true, 'Url already exists, return existing short url');
             }
             else {
@@ -46,7 +46,7 @@ module.exports = (UrlRepository) => {
 
                 const addResult = await UrlRepository.add(token, sanitizeUrl);
                 if (addResult.success) {
-                    const shortUrl = `${process.env.SERVER}:${process.env.PORT}/url/${token}`;
+                    const shortUrl = `${process.env.SERVER}/url/${token}`;
                     response = new Response(shortUrl, true, 'Short url is generated');
                 } else {
                     response = new Response(null, false, addResult.message);
