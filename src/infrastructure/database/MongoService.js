@@ -10,9 +10,10 @@ module.exports = class MongoService extends DBService {
 
     async initDatabase() {
         const dbName = "urlshortener_db";
-        const url = `mongodb://${process.env.MONGO_HOSTNAME}:27017/${dbName}`; //mongoserver is service name of mongo in dockers
+        //const url = `mongodb://${process.env.MONGO_HOSTNAME}:27017/${dbName}`; //mongoserver is service name of mongo in dockers
         //const url = `mongodb://192.168.1.103:27017/${dbName}`; //mongoserver is service name of mongo in dockers
-
+        const url = `mongodb+srv://user:pb6dbaV24MvFLWiy@cluster0.r6oje.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+        
         return setTimeout(() => {
             return mongoose.connect(url, { useNewUrlParser: true })
                 .then(async () => {
@@ -23,7 +24,7 @@ module.exports = class MongoService extends DBService {
             .catch(error => {
                 throw error;
             });
-        }, 10000); //delay 10 seconds to let mongo server to get ready
+        }, 3000); //delay 10 seconds to let mongo server to get ready
         //console.log("Mongo Database created!");
     }
 };

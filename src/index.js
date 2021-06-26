@@ -5,6 +5,7 @@ const dependencies = require('./config/dependencies');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const host = process.env.SERVER || 'No host name specified';
 
 dependencies.DBService.initDatabase().then(() => {
 
@@ -28,9 +29,10 @@ dependencies.DBService.initDatabase().then(() => {
     app.use('/', routes(dependencies));
 
     // * Start * //
-    app.listen(port, () =>
-    console.log(`Example app listening on port ${port}!`),
-    );
+    app.listen(port, () => {
+        console.log(`App host name is ${host}!`),
+        console.log(`App listening on port ${port}!`);
+    });
 }, (err) => {
     console.log(`DB not ready, err:${err}`);
     process.exit(1);
