@@ -74,3 +74,6 @@ typings/
 
 # Mongo db data
 data
+
+# env files
+.env.*
