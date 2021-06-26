@@ -5,24 +5,30 @@
  
 ## Requirements
 - npm
-- redis
+- mongodb
 
 ## Install
-- Run "npm install" to download dependencies
-- Install redis
+- Run **npm install** to download dependencies
+- Install mongodb
 
 ## Run
+- create a .env file with the values:
+SERVER=http://localhost:3000
+MONGO_HOSTNAME=localhost
 - npm start
 ##### or with Docker installed
+- create a .env file with the values:
+SERVER=http://localhost:3000
+MONGO_HOSTNAME=mongoserver
 - docker-compose build
-- docker-compose up
+- docker-compose up'
+- go to http://localhost:3000
 
 ## Test
 - npm test (test using jest)
 
-## Routes
-
-## Assumptions made
+## Live Demo
+https://infinite-tundra-26120.herokuapp.com/
 
 
 ## Others
