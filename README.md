@@ -13,13 +13,13 @@
 
 ## Run
 - create a .env file with the values:
-SERVER=http://localhost:3000
-MONGO_HOSTNAME=localhost
+> SERVER=http://localhost:3000
+> MONGO_HOSTNAME=localhost
 - npm start
 ##### or with Docker installed
 - create a .env file with the values:
-SERVER=http://localhost:3000
-MONGO_HOSTNAME=mongoserver
+> SERVER=http://localhost:3000
+> MONGO_HOSTNAME=mongoserver
 - docker-compose build
 - docker-compose up'
 - go to http://localhost:3000
