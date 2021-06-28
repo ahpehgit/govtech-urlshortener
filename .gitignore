@@ -76,4 +76,5 @@ typings/
 data
 
 # env files
+.env
 .env.*
