@@ -12,11 +12,9 @@ dependencies.DBService.initDatabase().then(() => {
     // * Application-Level Middleware * //
 
     // Third-Party Middleware
-    app.use(cors());
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));
-
+    
     // Built-In Middleware
+    app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
