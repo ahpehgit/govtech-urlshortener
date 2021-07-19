@@ -13,7 +13,7 @@ module.exports = class MongoService extends DBService {
         let url = `mongodb://${process.env.MONGO_HOSTNAME}:27017/${dbName}`; //mongoserver is service name of mongo in dockers
         
         if (process.env.ENVIRONMENT && process.env.ENVIRONMENT === "production") {
-            url = `mongodb+srv://user:pb6dbaV24MvFLWiy@${process.env.MONGO_HOSTNAME}/${dbName}?retryWrites=true&w=majority`;
+            url = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOSTNAME}/${dbName}?retryWrites=true&w=majority`;
         }
         
         return setTimeout(() => {
