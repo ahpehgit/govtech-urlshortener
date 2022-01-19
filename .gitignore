@@ -78,3 +78,6 @@ data
 # env files
 .env
 .env.*
+
+# MacOS files
+.DS_Store
