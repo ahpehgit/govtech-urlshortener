@@ -34,3 +34,4 @@ https://infinite-tundra-26120.herokuapp.com/
 
 
 ## Others
+To test, please disable the Cloudflate WARP first.
